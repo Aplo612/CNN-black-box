@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CNN Black Box Test</title>
+</head>
+<body>
+  <h1>CNN Black Box Convolution Test</h1>
+  
+  <div id="convolution-container"></div>
+  <div id="convolution-container2"></div>
+  <div id="convolution-container3"></div>
+  <div id="relu-container"></div>
+  <div id="max-pooling-container"></div>
+
+  <script src="./dist/cnn-black-box.js"></script>
+  <script>
+    CNNBlackBox.startConvolution({
+      container: 'convolution-container',
+      imageSrc: 'https://i.imgur.com/JlUvsxa.jpg', 
+      filter: [0.3, -0.21, 0.07, -0.19, 0.1, -0.01, -0.04, -0.02, -0.08]
+    });
+    CNNBlackBox.startConvolution({
+      container: 'convolution-container2',
+      imageSrc: 'https://i.imgur.com/JlUvsxa.jpg', 
+      filter: [1, 1, 1, 0, 0, 0, -1, -1, -1],
+    });
+    CNNBlackBox.startConvolution({
+      container: 'convolution-container3',
+      imageSrc: 'https://i.imgur.com/JlUvsxa.jpg', 
+      filter: [-1, 0, 1, -1, 0, 1, -1, 0, 1],
+      channel: 'G'
+    });
+    //filter: [-1, 0, 1, -1, 0, 1, -1, 0, 1] 
+    //filter: [0.3, -0.21, 0.07, -0.19, 0.1, -0.01, -0.04, -0.02, -0.08] 
+    CNNBlackBox.startReLU({
+      container: 'relu-container',
+      imageSrc: 'https://i.imgur.com/JlUvsxa.jpg',
+      filter: [0.3, -0.21, 0.07, -0.19, 0.1, -0.01, -0.04, -0.02, -0.08]
+    });
+
+    CNNBlackBox.startMaxPooling({
+      container: 'max-pooling-container',
+      imageSrc: 'https://i.imgur.com/JlUvsxa.jpg',
+      filter: [0.3, -0.21, 0.07, -0.19, 0.1, -0.01, -0.04, -0.02, -0.08]
+    });
+
+  </script>
+  
+</body>
+</html>
